@@ -42,6 +42,7 @@ month : The month (0-based index).
 Returns:
 
 Number of working days (excluding Fridays) in the month.
+
 💻 Code Walkthrough
 Working Days Calculation
 Excluding Fridays:
@@ -69,6 +70,7 @@ Total Target: 186.6
 Working days in each month (excluding Fridays): [26, ..., 26]
 Worked days in each month (Jan-Mar): [26, 0, 26]
 Monthly target for each month: [93.3, 0, 93.3]
+
 📝 Example Run
 If you run the code with the input:
 
@@ -85,6 +87,7 @@ TotalTarget: Total distributed target based on valid working days.
 daysExcludingFriend: The working days for each month in the year, excluding Fridays.
 daysWorkedExcludingFridays: Worked days (excluding Fridays) between the start and end dates.
 monthlyTargets: Proportional distribution of the target across the working days.
+
 🚀 How to Use
 Clone the project repository:
 bash
@@ -95,6 +98,7 @@ bash
 Copy code
 cd <project-directory>
 Run the function in any JavaScript environment (e.g., Node.js or browser console) and pass the required parameters.
+
 📂 Project Structure
 bash
 Copy code
@@ -102,6 +106,7 @@ Copy code
 │   └── calculateWorkingDays.js   # Main function file
 ├── README.md                     # Project documentation
 └── package.json                  # Project dependencies (if any)
+
 📧 Contact
 For any questions or support, feel free to reach out at:
 
