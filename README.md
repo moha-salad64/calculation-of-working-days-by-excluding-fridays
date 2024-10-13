@@ -6,6 +6,8 @@ Exclude Fridays from working days.
 Calculate the total number of working days for each month.
 Calculate the worked days between a specific range of dates.
 Proportionally distribute a given target based on working days.
+
+
 🛠️ Functions Overview
 1. calculateTotalTarget(startDate, endDate, target)
 Main function that calculates working days and target distribution.
