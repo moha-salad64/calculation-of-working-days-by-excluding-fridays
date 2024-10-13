@@ -1,89 +1,107 @@
-Below is the README file that explains how the provided code works:
+📅 Working Days and Target Calculation Project
+This project calculates the total number of working days, excluding Fridays, for a given period between a start and end date. It also distributes a target value proportionally across the valid working days.
 
-Working Days and Target Calculation Project
-This project calculates the total working days excluding Fridays between a given start and end date. It also distributes a target proportionally across the valid working days. The code consists of several functions that each serve a specific purpose. Below is a detailed explanation of the code and its functions.
+📌 Features
+Exclude Fridays from working days.
+Calculate the total number of working days for each month.
+Calculate the worked days between a specific range of dates.
+Proportionally distribute a given target based on working days.
+🛠️ Functions Overview
+1. calculateTotalTarget(startDate, endDate, target)
+Main function that calculates working days and target distribution.
 
-Code Breakdown
-1. function calculateTotalTarget(startDate, endDate, target)
-This is the main function that accepts three inputs:
+Parameters:
 
-startDate: The starting date of the period you want to calculate working days for.
-endDate: The ending date of the period.
-target: The target number that will be distributed proportionally across the working days in the given range.
-The main output of the function includes:
+startDate : The starting date of the period (e.g., '2024-01-01').
+endDate : The ending date of the period (e.g., '2024-03-31').
+target : The target number to be distributed across working days.
+Returns:
 
-TotalTarget: The total calculated target based on valid working days in the given period.
-daysExcludingFriend: Array of working days for each month in the year, excluding Fridays.
-daysWorkedExcludingFridays: Array showing how many working days (excluding Fridays) were actually worked between the given start and end dates in each month.
-monthlyTargets: Array showing the proportional target for each month.
-2. function isworkingDay(day)
-This helper function checks whether a given date is a working day (i.e., it is not a Friday).
+TotalTarget : The total calculated target for the working days.
+daysExcludingFriend : Array of working days (excluding Fridays) for each month of the year.
+daysWorkedExcludingFridays : Array of worked days (excluding Fridays) for each month in the date range.
+monthlyTargets : Proportional target for each month based on working days.
+2. isworkingDay(day)
+Checks whether the given day is a working day (excluding Fridays).
 
-Input:
-day: A date string or Date object.
-Output:
-Returns true if the day is not Friday, otherwise returns false.
-This function uses JavaScript’s getDay() method which returns 5 for Friday. If the day is not a Friday, it is considered a working day.
+Parameter:
 
-3. function countWorkingDaysinMonth(year, month)
-This function counts the total number of working days (excluding Fridays) for a given month.
+day : A date string or Date object.
+Returns:
 
-Input:
-year: The year of the month you are calculating.
-month: The month you are calculating.
-Output:
-Returns the number of working days in that month (excluding Fridays).
-This function:
+true if the day is not Friday, otherwise false.
+3. countWorkingDaysinMonth(year, month)
+Calculates the number of working days (excluding Fridays) in a given month.
 
-Loops through each day in the month.
-Checks if the day is a working day by calling isworkingDay().
-If the day is a working day, it increments the workingDays counter.
-4. function calculateTotalTarget()
-This is the core function that:
+Parameters:
 
-Iterates over each month within the year and calculates the working days using countWorkingDaysinMonth().
-For each month between the start and end dates, it calculates the actual worked days, excluding Fridays.
-It distributes the target across the working days proportionally.
-The breakdown of its tasks:
+year : The year of the month.
+month : The month (0-based index).
+Returns:
 
-Calculate working days in each month of the year:
+Number of working days (excluding Fridays) in the month.
+💻 Code Walkthrough
+Working Days Calculation
+Excluding Fridays:
 
-The loop from January to December calculates how many working days are in each month, excluding Fridays, and stores the results in the daysExcludingFriend array.
-The total number of working days in the year is summed in TotaldaysInYears.
-Calculate working days for the specific date range:
+The function isworkingDay() is used to check if a day is not Friday. It uses JavaScript's getDay() method, where 5 represents Friday.
+Monthly Working Days:
 
-The code loops through the months between startDate and endDate and counts the number of worked days in the range, excluding Fridays. These values are stored in daysWorkedExcludingFridays.
-Distribute the target proportionally:
+The function countWorkingDaysinMonth() loops through all days of a given month, checks if it's a working day using isworkingDay(), and counts the valid days.
+Target Distribution:
 
-The function calculates a proportional target for each month based on the worked days (excluding Fridays) and stores them in monthlyTargets.
-Calculate total target based on working days:
-
-The total target for the period is calculated by distributing the target across the total working days.
-Example Run
-If you call the function with the following inputs:
-
+After calculating the total working days in the given period, the monthlyTargets array holds the target values proportional to the number of working days in each month.
+Example
 javascript
 Copy code
 const Result = calculateTotalTarget('2024-01-01', '2024-03-31', 435);
-The output will be:
 
-TotalTarget: The calculated target based on the working days in the given date range.
-daysExcludingFriend: Shows working days for each month (January to December), excluding Fridays. Example for January and March could be:
-csharp
-Copy code
-[26, ..., 26]
-daysWorkedExcludingFridays: Shows how many days (excluding Fridays) were worked between January 1st and March 31st. Example:
-csharp
-Copy code
-[26, 0, 26]
-monthlyTargets: Shows how the target is distributed across the valid working days. Example:
-csharp
-Copy code
-[93.3, 0, 93.3]
-Example Output
+console.log(Result.TotalTarget);                // Total target for the working days
+console.log(Result.daysExcludingFriend);        // Working days in each month (excluding Fridays)
+console.log(Result.daysWorkedExcludingFridays); // Worked days in the period (excluding Fridays)
+console.log(Result.monthlyTargets);             // Proportional target for each month
+Output
 sql
 Copy code
-working day for each month in year with non-friday: 26, ..., 26 
-worked day excluding friday with start and end months in each month: 26, 0, 26 
-monthly target of each month: 93.3, 0, 93.3 
-Total Target based on working days: 186.6
+Total Target: 186.6
+Working days in each month (excluding Fridays): [26, ..., 26]
+Worked days in each month (Jan-Mar): [26, 0, 26]
+Monthly target for each month: [93.3, 0, 93.3]
+📝 Example Run
+If you run the code with the input:
+
+javascript
+Copy code
+calculateTotalTarget('2024-01-01', '2024-03-31', 435);
+January has 26 working days.
+February has 0 working days (if the range does not include Feb).
+March has 26 working days.
+The calculated total target is distributed across these months, resulting in a proportional target value for each.
+
+📊 Output Details
+TotalTarget: Total distributed target based on valid working days.
+daysExcludingFriend: The working days for each month in the year, excluding Fridays.
+daysWorkedExcludingFridays: Worked days (excluding Fridays) between the start and end dates.
+monthlyTargets: Proportional distribution of the target across the working days.
+🚀 How to Use
+Clone the project repository:
+bash
+Copy code
+git clone <your-repo-url>
+Navigate to the project directory:
+bash
+Copy code
+cd <project-directory>
+Run the function in any JavaScript environment (e.g., Node.js or browser console) and pass the required parameters.
+📂 Project Structure
+bash
+Copy code
+├── src/
+│   └── calculateWorkingDays.js   # Main function file
+├── README.md                     # Project documentation
+└── package.json                  # Project dependencies (if any)
+📧 Contact
+For any questions or support, feel free to reach out at:
+
+Email: mohamedsalaad509@gmail.com
+GitHub: moha-salad64
